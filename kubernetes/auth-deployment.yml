@@ -1,22 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: users-deployment
+  name: auth-deployment
 spec:
   selector:
     matchLabels:
-      app: users
+      app: auth
   template:
     metadata:
       labels:
-        app: users
+        app: auth
     spec:
       containers:
-        - name: users-container
-          image: 17200082/k8s-users:latest
-          env:
-            - name: AUTH_ADDRESS
-              value: "auth-service.default"
+        - name: auth-container
+          image: 17200082/k8s-auth:latest
           resources:
             limits:
               memory: "128Mi"
